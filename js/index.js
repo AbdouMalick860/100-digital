@@ -1,21 +1,39 @@
+document.addEventListener("DOMContentLoaded", () => {
 
-    // MENU BURGER
-    const burgerBtn = document.getElementById("burgerBtn");
-    const sideMenu = document.getElementById("sideMenu");
+  const burger = document.getElementById("burgerBtn");
+  const menu = document.getElementById("sideMenu");
 
-    burgerBtn.addEventListener("click", () => {
-      burgerBtn.classList.toggle("active");
-      sideMenu.classList.toggle("open");
+  if (!burger || !menu) {
+    console.error("Burger ou menu introuvable dans le DOM");
+    return;
+  }
+
+  burger.addEventListener("click", () => {
+    menu.classList.toggle("open");
+    burger.classList.toggle("active");
+  });
+
+  document.querySelectorAll(".side-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("open");
+      burger.classList.remove("active");
     });
+  });
 
-    // Fermer le menu quand on clique sur un lien
-    document.querySelectorAll(".side-menu a").forEach((link) => {
-      link.addEventListener("click", () => {
-        burgerBtn.classList.remove("active");
-        sideMenu.classList.remove("open");
-      });
+  const yearEl = document.getElementById("year");
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+
+  document.querySelectorAll("a[href^='#']").forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
     });
+  });
 
-    // Année automatique
-    document.getElementById("year").textContent = new Date().getFullYear();
-  
+});

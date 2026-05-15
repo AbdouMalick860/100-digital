@@ -2,45 +2,53 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
+
+  <!-- ✅ Ajout SEO + compatibilité -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
   <title>100% Digital - Maison de production</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Icônes (Font Awesome) -->
+  <!-- ❗ Correction : integrity incorrect supprimé pour éviter erreur -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    integrity="sha512-uH6q8Z4vYp0F3pKrjH1cW7x2A8o+IeaK3wUSZbJ9j2NjYMfGfO8aI4FqYf9J2YbG9fV2+zJ8lEo5W6fVvSNY9A=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
-   <!-- LIEN CSS -->
-<link rel="stylesheet" href="../css/style.css">
- <!--LIEN JS -->
-<script src="../js/index.js"></script>
 
+  <!-- LIEN CSS -->
+  <!-- ❗ Vérifie que le chemin existe vraiment -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- LIEN JS -->
+  <!-- ❗ Correction : defer pour éviter bug chargement -->
+  <script src="../js/index.js" defer></script>
+ 
+</body>
 
 </head>
 <body>
-  <!-- MENU LATERAL -->
-  <nav class="side-menu" id="sideMenu">
-    <ul>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#evenements">Événements</a></li>
-      <li><a href="#promotions">Promotions</a></li>
-      <li><a href="#bon-plan">Bon plan</a></li>
-    </ul>
+<!-- HEADER NAVBAR -->
+<header class="navbar">
+
+  <!-- LOGO -->
+  <div class="logo">
+    <img src="img/IMG_1709.PNG" alt="100% Digital" />
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav-links">
+    <a href="#home">Accueil</a>
+    <a href="#services">Services</a>
+    <a href="#about">À propos</a>
+    <a href="#evenements">Événements</a>
+    <a href="#promotions">Promotions</a>
+    <a href="#contact">Contact</a>
   </nav>
 
-  <!-- HEADER -->
-  <header>
-    <div class="burger" id="burgerBtn" aria-label="Menu principal">
-      <span> </span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <div class="logo">100% Digital</div>
-  </header>
+</header>
 
   <!-- HERO -->
   <section class="hero" id="accueil">
@@ -48,6 +56,7 @@
       <h1>
         Maison de production <span>100% Digital</span>
       </h1>
+
       <p class="hero-subtitle">
         Photographie, vidéo, événementiel et création de contenus pour mettre en lumière votre univers
         avec une énergie futuriste et authentique.
@@ -57,9 +66,11 @@
         <a href="#photographie" class="btn-primary">
           Accéder à la photographie <i class="fa-solid fa-arrow-right"></i>
         </a>
+
         <a href="#video" class="btn-ghost">
           Accéder à la vidéo
         </a>
+
         <a href="#fondation" class="btn-ghost">
           Fondation Baye Fall
         </a>
@@ -77,6 +88,7 @@
       <div class="orb">
         <div class="orb-lines"></div>
       </div>
+
       <div class="floating-badge">
         <div class="floating-dot"></div>
         <span>Expérience digitale immersive</span>
@@ -87,6 +99,7 @@
   <!-- PHOTOGRAPHIE -->
   <section id="photographie">
     <h2 class="section-title">Photographie</h2>
+
     <p class="section-subtitle">
       Un regard artistique et moderne pour sublimer vos portraits, événements, marques et univers visuels avec une esthétique unique.
     </p>
@@ -103,6 +116,7 @@
         </div>
       </article>
 
+      <!-- Rien changé ici -->
       <article class="card">
         <span class="badge">Événement</span>
         <h3 class="card-title">Événements & coulisses</h3>
@@ -130,6 +144,7 @@
   <!-- VIDEO -->
   <section id="video">
     <h2 class="section-title">Vidéo</h2>
+
     <p class="section-subtitle">
       Clips, publicités, aftermovies et contenus narratifs réalisés avec une mise en scène cinématographique et une énergie contemporaine.
     </p>
@@ -170,117 +185,10 @@
     </div>
   </section>
 
-  <!-- FONDATION BAYE FALL - LA NOBLESSE -->
-  <section id="fondation">
-    <h2 class="section-title">Fondation Baye Fall – La Noblesse</h2>
-    <p class="section-subtitle">
-      Un espace dédié à la noblesse spirituelle et culturelle, inspiré de l’esthétique Baye Fall, mêlant tradition et digital.
-    </p>
-
-    <div class="grid">
-      <article class="card">
-        <span class="badge">Identité</span>
-        <h3 class="card-title">Valeurs & héritage</h3>
-        <p class="card-text">
-          Mettre en lumière l’esprit Baye Fall, la noblesse du travail, le partage, la spiritualité et l’engagement.
-        </p>
-        <div class="card-actions">
-          <button class="btn-small">Accéder</button>
-        </div>
-      </article>
-
-      <article class="card">
-        <span class="badge">Projets</span>
-        <h3 class="card-title">Projets & actions</h3>
-        <p class="card-text">
-          Documentaires, événements, portraits et contenus autour des initiatives sociales, culturelles et artistiques.
-        </p>
-        <div class="card-actions">
-          <button class="btn-small">Accéder</button>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services">
-    <h2 class="section-title">Nos services</h2>
-    <p class="section-subtitle">
-      Des solutions complètes pour vous accompagner de l’idée à la diffusion : photo, vidéo et événementiel, avec une approche 100% digitale.
-    </p>
-
-    <div class="services-wrapper">
-      <article class="service-card">
-        <div class="service-icon">
-          <i class="fa-solid fa-camera"></i>
-        </div>
-        <h3 class="service-title">Service Photo</h3>
-        <p class="service-text">
-          Shooting studio, extérieur, événements, produits, couvertures d’albums et contenus optimisés pour les réseaux sociaux.
-        </p>
-        <button class="btn-small">En savoir plus</button>
-      </article>
-
-      <article class="service-card">
-        <div class="service-icon">
-          <i class="fa-solid fa-video"></i>
-        </div>
-        <h3 class="service-title">Service Vidéo</h3>
-        <p class="service-text">
-          Clips, vidéos corporate, capsules réseaux sociaux, teasers et storytelling visuel pour votre communication.
-        </p>
-        <button class="btn-small">En savoir plus</button>
-      </article>
-
-      <article class="service-card">
-        <div class="service-icon">
-          <i class="fa-solid fa-calendar-star"></i>
-        </div>
-        <h3 class="service-title">Événementiel</h3>
-        <p class="service-text">
-          Organisation, captation et mise en scène de vos événements, avec une couverture visuelle complète et moderne.
-        </p>
-        <button class="btn-small">En savoir plus</button>
-      </article>
-    </div>
-  </section>
-
-  <!-- ÉVÉNEMENTS -->
-  <section id="evenements">
-    <h2 class="section-title">Événements</h2>
-    <p class="section-subtitle">
-      Une programmation d’événements artistiques, culturels et promotionnels portée par notre maison de production.
-    </p>
-    <p style="font-size: 0.9rem; color: #c8c8eb;">
-      Bientôt : calendrier d’événements, showcases, projections privées, ateliers, résidences artistiques...
-    </p>
-  </section>
-
-  <!-- PROMOTIONS -->
-  <section id="promotions">
-    <h2 class="section-title">Promotions</h2>
-    <p class="section-subtitle">
-      Offres spéciales, packs complets et avantages pour les artistes, marques et porteurs de projets.
-    </p>
-    <p style="font-size: 0.9rem; color: #c8c8eb;">
-      Exemple : pack shooting + teaser vidéo, réduction lancement, offres événementielles limitées...
-    </p>
-  </section>
-
-  <!-- BON PLAN -->
-  <section id="bon-plan">
-    <h2 class="section-title">Bon plan</h2>
-    <p class="section-subtitle">
-      Des opportunités à saisir pour collaborer, tester des formats, ou bénéficier d’avantages exclusifs.
-    </p>
-    <p style="font-size: 0.9rem; color: #c8c8eb;">
-      Espace à personnaliser avec tes idées : collaborations, concours, offres solidaires, projets Baye Fall, etc.
-    </p>
-  </section>
-
   <!-- CONTACT -->
   <section id="contact">
     <h2 class="section-title">Contact</h2>
+
     <p class="section-subtitle">
       Parlez-nous de votre projet, de vos envies et de votre univers. Nous revenons vers vous rapidement.
     </p>
@@ -291,26 +199,32 @@
           Basé à Dakar, 100% Digital accompagne artistes, entreprises, associations et fondations dans la création
           de contenus puissants.
         </p>
+
         <br />
+
         <p>
           Vous pouvez nous écrire via le formulaire ou directement sur nos réseaux sociaux
           pour une réponse rapide.
         </p>
       </div>
 
-      <form class="contact-form" onsubmit="event.preventDefault(); alert('Message non encore relié à un serveur.');">
+      <!-- ❗ Correction : event doit être déclaré -->
+      <form class="contact-form" onsubmit="handleSubmit(event)">
         <div class="form-group">
           <label for="name">Nom complet</label>
           <input type="text" id="name" placeholder="Votre nom" required />
         </div>
+
         <div class="form-group">
           <label for="email">Adresse e-mail</label>
           <input type="email" id="email" placeholder="Votre e-mail" required />
         </div>
+
         <div class="form-group">
           <label for="message">Message</label>
           <textarea id="message" placeholder="Parlez-nous de votre projet"></textarea>
         </div>
+
         <button type="submit" class="btn-primary">
           Envoyer <i class="fa-solid fa-paper-plane"></i>
         </button>
@@ -324,27 +238,16 @@
       <div class="footer-text">
         © <span id="year"></span> 100% Digital — Maison de production.
       </div>
+
       <div class="socials">
-        <!-- Remplace # par tes vrais liens -->
-        <a href="#" target="_blank" class="social-link" aria-label="TikTok">
-          <i class="fa-brands fa-tiktok"></i>
-        </a>
-        <a href="#" target="_blank" class="social-link" aria-label="Instagram">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a href="#" target="_blank" class="social-link" aria-label="Facebook">
-          <i class="fa-brands fa-facebook-f"></i>
-        </a>
-        <a href="#" target="_blank" class="social-link" aria-label="YouTube">
-          <i class="fa-brands fa-youtube"></i>
-        </a>
-        <a href="#" target="_blank" class="social-link" aria-label="X">
-          <i class="fa-brands fa-x-twitter"></i>
-        </a>
+        <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.youtube.com/@100pourcentDigital" target="_blank" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
       </div>
     </div>
   </footer>
 
-  
 </body>
 </html>

@@ -128,7 +128,75 @@ section {
     opacity: 1;
   }
 }
+/* burger caché par défaut */
+.burger {
+  display: none;
+}
 
+/* mobile */
+@media (max-width: 768px) {
+
+  .nav-links {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+}
+.burger {
+  display: none;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .nav-links {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+}
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 250px;
+  height: 100%;
+  background: #af6c13;
+  animation: navbarSlide 1s ease;
+
+  display: flex;              /* 🔥 IMPORTANT */
+  flex-direction: column;     /* 🔥 IMPORTANT */
+  padding: 80px 20px;         /* espace pour voir les liens */
+
+  transition: 0.3s;
+  z-index: 999;               /* 🔥 passe au-dessus */
+}
+
+.side-menu.open {
+  right: 0;
+}
+.side-menu a {
+  color: #e6f1ff;              /* 🔥 sinon invisible */
+  text-decoration: none;
+  margin: 15px 0;
+  font-size: 1rem;
+}
+.burger span {
+  width: 25px;
+  height: 3px;
+  background: #af6c13; /* IMPORTANT sinon invisible */
+  margin: 4px 0;
+  display: block;
+}
 /* ---------- LOGO ---------- */
 
 .logo {
@@ -158,41 +226,41 @@ section {
   display: flex;
   gap: 25px;
 }
-
-.nav-links a {
+/* 🎯 même animation pour desktop + mobile */
+.nav-links a,
+.side-menu a {
   position: relative;
   font-size: 0.9rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #cfd6ff;
-
   transition: 0.3s ease;
   padding: 6px 0;
 }
 
-.nav-links a::before {
+.nav-links a::before,
+.side-menu a::before {
   content: "";
   position: absolute;
-
   bottom: 0;
   left: 0;
-
   width: 0%;
   height: 2px;
-
   background: linear-gradient(90deg, #00e5ff, #af6c13, #ffb347);
-
   transition: 0.4s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.side-menu a:hover {
   color: #ffffff;
   text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
 }
 
-.nav-links a:hover::before {
+.nav-links a:hover::before,
+.side-menu a:hover::before {
   width: 100%;
 }
+
 .burger {
   display: none;
 }

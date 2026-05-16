@@ -193,6 +193,18 @@ section {
 .nav-links a:hover::before {
   width: 100%;
 }
+.burger {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+  .nav-links {
+    display: none;
+  }
+}
 
 /* ---------- HERO ---------- */
 

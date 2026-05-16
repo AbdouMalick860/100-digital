@@ -1021,3 +1021,271 @@ footer {
     font-size: 2rem;
   }
 }
+
+/* =========================
+   GALERIE STYLE PINTEREST
+========================= */
+
+.gallery {
+  padding: 100px 6%;
+  color: white;
+}
+
+.gallery h2 {
+  margin-bottom: 25px;
+}
+
+/* GRID */
+.grid {
+  column-count: 4;
+  column-gap: 15px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+  break-inside: avoid;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  height: auto; /* 🔥 adaptation automatique */
+  display: block;
+  border-radius: 12px;
+  transition: 0.4s ease;
+}
+
+/* VIDEO */
+.card.video video {
+  width: 100%;
+  height: auto; /* 🔥 pas de déformation */
+  display: block;
+  object-fit: cover;
+}
+
+/* =========================
+   HOVER EFFECT
+========================= */
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.card:hover img,
+.card:hover video {
+  transform: scale(1.05);
+  filter: brightness(0.7);
+}
+
+/* =========================
+   OVERLAY FUTURISTE
+========================= */
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.2),
+    transparent
+  );
+
+  color: #fff;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.4s ease;
+
+  backdrop-filter: blur(6px);
+}
+
+/* TEXTE */
+.overlay h3 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+  color: #00e5ff;
+  text-transform: uppercase;
+}
+
+.overlay p {
+  font-size: 0.8rem;
+  color: #cfd6ff;
+}
+
+/* HOVER OVERLAY */
+.card:hover .overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   BADGE VIDEO
+========================= */
+
+.card.video::after {
+  content: "▶ VIDEO";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  background: rgba(0,0,0,0.6);
+  color: #00e5ff;
+  font-size: 10px;
+  padding: 5px 8px;
+  border-radius: 5px;
+}
+
+/* =========================
+   MODAL VIDEO
+========================= */
+
+#modalContent video {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1024px) {
+  .grid {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 500px) {
+  .grid {
+    column-count: 1;
+  }
+}
+/* =========================
+   FEATURED SECTION
+========================= */
+
+.featured-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* MEDIA */
+.featured-section video,
+.featured-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* OVERLAY */
+.featured-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 60px;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.9),
+    rgba(0,0,0,0.4),
+    transparent
+  );
+
+  color: white;
+}
+
+/* TEXTE */
+.featured-overlay h1 {
+  font-size: 2.5rem;
+  color: #00e5ff;
+  margin-bottom: 10px;
+}
+
+.featured-overlay p {
+  font-size: 1rem;
+  color: #cfd6ff;
+  margin-bottom: 20px;
+}
+
+/* BOUTON */
+.featured-overlay button {
+  padding: 10px 20px;
+  border: none;
+  background: linear-gradient(90deg, #00e5ff, #ffb347);
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.featured-overlay button:hover {
+  transform: scale(1.05);
+}
+
+/* HOVER */
+.featured-section:hover video {
+  transform: scale(1.05);
+  transition: 0.5s ease;
+}
+.gallery {
+  margin-top: 50px;
+}.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 35px;
+  color: white;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+.back-btn {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 10001;
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>100% Digital - Maison de production</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- JS -->
+  <script src="../js/index.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">
+    <img src="img/IMG_1709.PNG" alt="100% Digital" />
+  </div>
+
+  <nav class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="service.html">Services</a>
+    <a href="#about">À propos</a>
+    <a href="#evenements">Événements</a>
+    <a href="#promotions">Promotions</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="burger" id="burgerBtn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+<!-- MENU MOBILE -->
+<nav class="side-menu" id="sideMenu">
+  <a href="index.html">Accueil</a>
+  <a href="service.html">Services</a>
+  <a href="#about">À propos</a>
+  <a href="evenements.html">Événements</a>
+  <a href="#promotions">Promotions</a>
+  <a href="#contact">Contact</a>
+</nav>
+<!-- FEATURED SECTION (grande card immersive) -->
+<section class="featured-section" onclick="openModal('video/vid1.mp4','video')">
+  
+  <video src="img/vid1.mp4" autoplay muted loop playsinline></video>
+
+  <div class="featured-overlay">
+    <h1>100% Digital Production</h1>
+    <p>Création audiovisuelle immersive & futuriste</p>
+    <button ><a href="img/vid1.mp4">Voir le projet</a></button>
+  </div>
+<div id="modal" class="modal">
+
+  <!-- CROIX -->
+  <span class="close-btn" onclick="closeModal()">×</span>
+
+  <!-- BOUTON RETOUR -->
+  <button class="back-btn" onclick="closeModal()">← Retour</button>
+
+  <!-- CONTENU -->
+  <div id="modalContent"></div>
+
+</div>
+</section>
+<!-- GALERIE -->
+<section class="gallery">
+  <h2>Nos Réalisations</h2>
+
+  <div class="grid">
+
+    <!-- IMAGE -->
+    <div class="card" onclick="openModal('img/11.png','image')">
+      <img src="img/11.png" alt="">
+      <div class="overlay">
+        <h3>Production Digitale</h3>
+        <p>Création visuelle haute qualité</p>
+      </div>
+    </div>
+
+    <!-- IMAGE TALL -->
+    <div class="card tall" onclick="openModal('img/2.png','image')">
+      <img src="img/2.png" alt="">
+      <div class="overlay">
+        <h3>Production Digitale</h3>
+        <p>Création visuelle moderne</p>
+      </div>
+    </div>
+
+    <!-- VIDEO -->
+    <div class="card video" onclick="openModal('video/vid1.mp4','video')">
+      <video src="img/vid1.mp4" muted loop playsinline></video>
+      <div class="overlay">
+        <h3>Clip Audiovisuel</h3>
+        <p>Réalisation cinématique</p>
+      </div>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="card" onclick="openModal('img/3.png','image')">
+      <img src="img/3.png" alt="">
+      <div class="overlay">
+        <h3>Production Digitale</h3>
+        <p>Visuel branding</p>
+      </div>
+    </div>
+
+    <!-- VIDEO -->
+    <div class="card wide video" onclick="openModal('video/vid2.mp4','video')">
+      <video src="img/vid2.mp4" muted loop playsinline></video>
+      <div class="overlay">
+        <h3>Clip Audiovisuel</h3>
+        <p>Storytelling visuel</p>
+      </div>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="card" onclick="openModal('img/3.png','image')">
+      <img src="img/3.png" alt="">
+      <div class="overlay">
+        <h3>Production Digitale</h3>
+        <p>Création artistique</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <span class="close" onclick="closeModal()"></span>
+  <div id="modalContent"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-text">
+      © <span id="year"></span> 100% Digital — Maison de production.
+    </div>
+
+    <div class="socials">
+      <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://www.youtube.com/@100pourcentDigital" target="_blank" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html

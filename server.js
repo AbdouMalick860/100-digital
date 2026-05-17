@@ -49,11 +49,12 @@ function isAdmin(req, res, next) {
 // ROUTES AUTHENTIFICATION
 // ==========================================
 app.post('/api/auth/register', async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, role } = req.body;
   if(!email || !password) return res.status(400).json({ error: 'Email et mot de passe requis' });
   try {
     const hash = await bcrypt.hash(password, 10);
-    await db.query("INSERT INTO users (email, password, role) VALUES (?, ?, ?)", [email, hash, 'admin']);
+    const userRole = role === 'admin' ? 'admin' : 'user';
+    await db.query("INSERT INTO users (email, password, role) VALUES (?, ?, ?)", [email, hash, userRole]);
     res.json({ success: true, message: 'Compte créé' });
   } catch (err) {
     if (err.code === 'ER_DUP_ENTRY') {

@@ -66,7 +66,7 @@
       });
 
       // Bouton Admin Flottant
-      if (localStorage.getItem('token')) {
+      if (localStorage.getItem('token') && localStorage.getItem('role') === 'admin') {
         const adminBtn = document.createElement('a');
         adminBtn.href = 'admin.html';
         adminBtn.innerHTML = '<i class="fa-solid fa-gear"></i> Admin';

@@ -75,12 +75,15 @@
   <script>
     // Vérifier l'authentification
     const token = localStorage.getItem('token');
-    if (!token) {
-      window.location.href = 'login.html';
+    const role = localStorage.getItem('role');
+    if (!token || role !== 'admin') {
+      alert("Accès refusé. Vous devez être administrateur.");
+      window.location.href = 'index.html';
     }
 
     function logout() {
       localStorage.removeItem('token');
+      localStorage.removeItem('role');
       window.location.href = 'login.html';
     }
 

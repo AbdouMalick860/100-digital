@@ -35,6 +35,13 @@
     </div>
   </header>
 
+  <div class="admin-container" style="margin-bottom: 30px;">
+    <div class="list-section" style="flex: 100%;">
+      <h2>Gestion des Utilisateurs</h2>
+      <div id="usersList">Chargement...</div>
+    </div>
+  </div>
+
   <div class="admin-container">
     <div class="form-section">
       <h2>Ajouter une nouvelle réalisation / service</h2>
@@ -192,7 +199,73 @@
       }
     }
 
+    async function loadUsers() {
+      const res = await fetch('/api/users', { headers: { 'Authorization': 'Bearer ' + token } });
+      const users = await res.json();
+      const container = document.getElementById('usersList');
+      container.innerHTML = '';
+      
+      if(users.length === 0) {
+        container.innerHTML = '<p>Aucun utilisateur trouvé.</p>';
+      }
+
+      users.forEach(user => {
+        let buttons = '';
+        if (user.role === 'admin') {
+          buttons += `<button class="btn-submit" style="width:auto; margin-right:5px; background:#f39c12; color:white;" onclick="changeRole(${user.id}, 'user')">👤 Rétrograder</button>`;
+        } else {
+          buttons += `<button class="btn-submit" style="width:auto; margin-right:5px;" onclick="changeRole(${user.id}, 'admin')">👑 Promouvoir Admin</button>`;
+        }
+        buttons += `<button class="btn-delete" onclick="deleteUser(${user.id})">🗑️ Supprimer</button>`;
+
+        container.innerHTML += `
+          <div class="card-item">
+            <div>
+              <h4>${user.email}</h4>
+              <p>Rôle : <strong style="color: ${user.role === 'admin' ? '#00e5ff' : '#aaa'}">${user.role.toUpperCase()}</strong></p>
+            </div>
+            <div>${buttons}</div>
+          </div>
+        `;
+      });
+    }
+
+    async function changeRole(id, newRole) {
+      if(confirm('Changer le rôle de cet utilisateur ?')) {
+        const res = await fetch('/api/users/' + id + '/role', {
+          method: 'PUT',
+          headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token 
+          },
+          body: JSON.stringify({ role: newRole })
+        });
+        if(res.ok) {
+          loadUsers();
+        } else {
+          const data = await res.json();
+          alert(data.error);
+        }
+      }
+    }
+
+    async function deleteUser(id) {
+      if(confirm('Supprimer définitivement cet utilisateur ?')) {
+        const res = await fetch('/api/users/' + id, {
+          method: 'DELETE',
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if(res.ok) {
+          loadUsers();
+        } else {
+          const data = await res.json();
+          alert(data.error);
+        }
+      }
+    }
+
     loadCards();
+    loadUsers();
   </script>
 </body>
 </html>

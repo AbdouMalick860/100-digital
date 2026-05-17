@@ -19,14 +19,11 @@
 </head>
 <body>
   <div class="auth-container">
-    <h2>Inscription Admin</h2>
+    <h2>Inscription</h2>
+    <p style="color: #aaa; margin-top: -10px; margin-bottom: 20px; font-size: 0.9rem;">Créez un compte visiteur pour accéder au site</p>
     <form id="registerForm">
       <input type="email" id="email" placeholder="Email" required>
       <input type="password" id="password" placeholder="Mot de passe" required>
-      <select id="role" required style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 6px; border: none; background: rgba(255,255,255,0.1); color: #fff;">
-        <option value="user" style="color: #000;">Utilisateur (Visiteur)</option>
-        <option value="admin" style="color: #000;">Administrateur</option>
-      </select>
       <button type="submit">Créer le compte</button>
     </form>
     <div class="auth-links">
@@ -40,13 +37,12 @@
       e.preventDefault();
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
-      const role = document.getElementById('role').value;
       
       try {
         const res = await fetch('/api/auth/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password, role })
+          body: JSON.stringify({ email, password })
         });
         const data = await res.json();
         

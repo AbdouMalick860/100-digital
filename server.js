@@ -49,12 +49,12 @@ function isAdmin(req, res, next) {
 // ROUTES AUTHENTIFICATION
 // ==========================================
 app.post('/api/auth/register', async (req, res) => {
-  const { email, password, role } = req.body;
+  const { email, password } = req.body;
   if(!email || !password) return res.status(400).json({ error: 'Email et mot de passe requis' });
   try {
     const hash = await bcrypt.hash(password, 10);
-    const userRole = role === 'admin' ? 'admin' : 'user';
-    await db.query("INSERT INTO users (email, password, role) VALUES (?, ?, ?)", [email, hash, userRole]);
+    // Tout nouveau compte est "user" par défaut. Seul un admin peut modifier ce rôle via le dashboard.
+    await db.query("INSERT INTO users (email, password, role) VALUES (?, ?, ?)", [email, hash, 'user']);
     res.json({ success: true, message: 'Compte créé' });
   } catch (err) {
     if (err.code === 'ER_DUP_ENTRY') {
@@ -152,6 +152,46 @@ app.post('/api/cards', authenticateToken, isAdmin, async (req, res) => {
 app.delete('/api/cards/:id', authenticateToken, isAdmin, async (req, res) => {
   try {
     await db.query("DELETE FROM cards WHERE id = ?", [req.params.id]);
+    res.json({ success: true });
+  } catch(err) {
+    res.status(500).json({error: err.message});
+  }
+});
+
+// ==========================================
+// ROUTES GESTION UTILISATEURS (ADMIN)
+// ==========================================
+app.get('/api/users', authenticateToken, isAdmin, async (req, res) => {
+  try {
+    const [rows] = await db.query("SELECT id, email, role FROM users", []);
+    res.json(rows);
+  } catch(err) {
+    res.status(500).json({error: err.message});
+  }
+});
+
+app.put('/api/users/:id/role', authenticateToken, isAdmin, async (req, res) => {
+  const { role } = req.body;
+  // Empêcher l'admin de se rétrograder lui-même pour éviter de se bloquer
+  if (parseInt(req.params.id) === req.user.id) {
+    return res.status(400).json({ error: 'Vous ne pouvez pas modifier votre propre rôle.' });
+  }
+  if (role !== 'admin' && role !== 'user') return res.status(400).json({ error: 'Rôle invalide' });
+
+  try {
+    await db.query("UPDATE users SET role = ? WHERE id = ?", [role, req.params.id]);
+    res.json({ success: true });
+  } catch(err) {
+    res.status(500).json({error: err.message});
+  }
+});
+
+app.delete('/api/users/:id', authenticateToken, isAdmin, async (req, res) => {
+  if (parseInt(req.params.id) === req.user.id) {
+    return res.status(400).json({ error: 'Vous ne pouvez pas supprimer votre propre compte.' });
+  }
+  try {
+    await db.query("DELETE FROM users WHERE id = ?", [req.params.id]);
     res.json({ success: true });
   } catch(err) {
     res.status(500).json({error: err.message});

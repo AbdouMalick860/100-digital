@@ -25,6 +25,15 @@
   <!-- LIEN JS -->
   <!-- ❗ Correction : defer pour éviter bug chargement -->
   <script src="js/index.js" defer></script>
+  
+  <!-- SECURITY RESTRICTION -->
+  <script>
+    if (!localStorage.getItem('token')) {
+      alert("Accès réservé aux membres. Veuillez vous connecter.");
+      window.location.href = 'login.html';
+    }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">

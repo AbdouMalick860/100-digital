@@ -64,6 +64,30 @@
         }
         observer.observe(el);
       });
+
+      // Bouton Admin Flottant
+      if (localStorage.getItem('token')) {
+        const adminBtn = document.createElement('a');
+        adminBtn.href = 'admin.html';
+        adminBtn.innerHTML = '<i class="fa-solid fa-gear"></i> Admin';
+        adminBtn.style.cssText = `
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: #00e5ff;
+          color: #000;
+          padding: 10px 20px;
+          border-radius: 50px;
+          font-weight: bold;
+          text-decoration: none;
+          z-index: 99999;
+          box-shadow: 0 4px 15px rgba(0,229,255,0.4);
+          transition: 0.3s;
+        `;
+        adminBtn.onmouseover = () => adminBtn.style.transform = 'scale(1.1)';
+        adminBtn.onmouseout = () => adminBtn.style.transform = 'scale(1)';
+        document.body.appendChild(adminBtn);
+      }
 });
 
 // GLOBAL FUNCTIONS

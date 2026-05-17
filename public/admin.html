@@ -59,14 +59,10 @@
           <input type="text" id="badge" placeholder="Ex: Vidéo Cinématique">
         </div>
         <div class="form-group">
-          <label>URL de l'image</label>
-          <input type="text" id="image_url" placeholder="Ex: img/11.png" required>
+          <label>Média (Image ou Vidéo)</label>
+          <input type="file" id="mediaFile" accept="image/*,video/*" required>
         </div>
-        <div class="form-group">
-          <label>URL de la vidéo (Si applicable)</label>
-          <input type="text" id="video_url" placeholder="Ex: img/vid1.mp4">
-        </div>
-        <button type="submit" class="btn-submit">Ajouter au site</button>
+        <button type="submit" class="btn-submit" id="submitBtn">Ajouter au site</button>
       </form>
     </div>
 
@@ -113,29 +109,73 @@
 
     document.getElementById('addCardForm').addEventListener('submit', async (e) => {
       e.preventDefault();
-      const payload = {
-        page: document.getElementById('page').value,
-        title: document.getElementById('title').value,
-        description: document.getElementById('description').value,
-        badge: document.getElementById('badge').value,
-        image_url: document.getElementById('image_url').value,
-        video_url: document.getElementById('video_url').value
-      };
+      const btn = document.getElementById('submitBtn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = 'Téléchargement...';
+      btn.disabled = true;
 
-      const res = await fetch('/api/cards', {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + token
-        },
-        body: JSON.stringify(payload)
-      });
+      try {
+        const fileInput = document.getElementById('mediaFile');
+        const file = fileInput.files[0];
+        
+        if (!file) {
+          alert('Veuillez sélectionner un fichier.');
+          return;
+        }
 
-      if(res.ok) {
-        e.target.reset();
-        loadCards();
-      } else {
-        alert('Erreur lors de l\'ajout');
+        // 1. Upload du fichier
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const uploadRes = await fetch('/api/upload', {
+          method: 'POST',
+          headers: { 'Authorization': 'Bearer ' + token },
+          body: formData
+        });
+
+        const uploadData = await uploadRes.json();
+        
+        if (!uploadData.success) {
+          alert("Erreur lors de l'upload du fichier : " + uploadData.error);
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+          return;
+        }
+
+        const fileUrl = uploadData.fileUrl;
+        const isVideo = file.type.startsWith('video/');
+
+        // 2. Création de la carte avec l'URL reçue
+        const payload = {
+          page: document.getElementById('page').value,
+          title: document.getElementById('title').value,
+          description: document.getElementById('description').value,
+          badge: document.getElementById('badge').value,
+          image_url: isVideo ? '' : fileUrl,
+          video_url: isVideo ? fileUrl : ''
+        };
+
+        const res = await fetch('/api/cards', {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if(res.ok) {
+          e.target.reset();
+          loadCards();
+        } else {
+          alert('Erreur lors de l\'ajout de la carte');
+        }
+      } catch (error) {
+        console.error(error);
+        alert('Erreur réseau');
+      } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
       }
     });
 

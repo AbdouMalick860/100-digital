@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>100% Digital - Maison de production</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- JS -->
+  <script src="js/index.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="img/IMG_1709.PNG" alt="100% Digital" />
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="service.html">Services</a>
+      <a href="index.html#about">À propos</a>
+      <a href="evenements.html" style="color: #ffffff; text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);">Événements</a>
+      <a href="index.html#promotions">Promotions</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <div class="burger" id="burgerBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- MENU MOBILE -->
+  <nav class="side-menu" id="sideMenu">
+    <a href="index.html">Accueil</a>
+    <a href="service.html">Services</a>
+    <a href="#about">À propos</a>
+    <a href="evenements.html">Événements</a>
+    <a href="#promotions">Promotions</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="fullscreen-scroll-container">
+    
+    <section class="fs-section clip-polygon" onclick="openModal('img/vid1.mp4','video')">
+      <video src="img/vid1.mp4" autoplay muted loop playsinline></video>
+      <div class="fs-overlay left-align">
+        <h1 class="slide-text">100% Digital Production</h1>
+        <p class="slide-text-delay">Création audiovisuelle immersive & futuriste</p>
+        <span class="fs-badge">Vidéo Cinématique</span>
+      </div>
+    </section>
+
+    <section class="fs-section clip-slant" onclick="openModal('img/11.png','gallery')">
+      <img src="img/11.png" alt="Production Digitale">
+      <div class="fs-overlay right-align">
+        <h1 class="slide-text">Création Haute Qualité</h1>
+        <p class="slide-text-delay">Des visuels percutants pour vos campagnes</p>
+        <span class="fs-badge">Photographie</span>
+      </div>
+    </section>
+
+    <section class="fs-section clip-hexagon" onclick="openModal('img/vid2.mp4','video')">
+      <video src="img/vid2.mp4" autoplay muted loop playsinline></video>
+      <div class="fs-overlay center-align">
+        <h1 class="slide-text">Storytelling Visuel</h1>
+        <p class="slide-text-delay">Racontez votre histoire en mouvement</p>
+        <span class="fs-badge">Clip Vidéo</span>
+      </div>
+    </section>
+
+    <section class="fs-section clip-arch" onclick="openModal('img/2.png','gallery')">
+      <img src="img/2.png" alt="Création">
+      <div class="fs-overlay left-align">
+        <h1 class="slide-text">Design Moderne</h1>
+        <p class="slide-text-delay">Une esthétique unique et marquante</p>
+        <span class="fs-badge">Direction Artistique</span>
+      </div>
+    </section>
+
+    <!-- FOOTER inside fullscreen container -->
+    <footer class="fs-footer">
+      <div class="footer-content">
+        <div class="footer-text">
+          © <span id="year"></span> 100% Digital — Maison de production.
+        </div>
+
+        <div class="socials">
+          <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.youtube.com/@100pourcentDigital" target="_blank" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal">
+    <span class="close-btn" onclick="closeModal()">×</span>
+    <button class="back-btn" onclick="closeModal()">← Retour</button>
+    <div id="modalContent"></div>
+  </div>
+
+</body>
+
+</html>

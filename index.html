@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8" />
 
@@ -11,33 +12,46 @@
 
   <!-- Icônes (Font Awesome) -->
   <!-- ❗ Correction : integrity incorrect supprimé pour éviter erreur -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- LIEN CSS -->
   <!-- ❗ Vérifie que le chemin existe vraiment -->
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 
   <!-- LIEN JS -->
   <!-- ❗ Correction : defer pour éviter bug chargement -->
-  <script src="../js/index.js" defer></script>
-  <script src="script.js"></script>
- 
-</body>
-
+  <script src="js/index.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-<header class="navbar">
+  <header class="navbar">
 
-  <div class="logo">
-    <img src="img/IMG_1709.PNG" alt="100% Digital" />
-  </div>
+    <div class="logo">
+      <img src="img/IMG_1709.PNG" alt="100% Digital" />
+    </div>
 
-  <nav class="nav-links">
+    <nav class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="service.html">Services</a>
+      <a href="#about">À propos</a>
+      <a href="evenements.html">Événements</a>
+      <a href="#promotions">Promotions</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- ✅ AJOUT ICI -->
+    <div class="burger" id="burgerBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+  </header>
+  <nav class="side-menu" id="sideMenu">
     <a href="index.html">Accueil</a>
     <a href="service.html">Services</a>
     <a href="#about">À propos</a>
@@ -45,23 +59,6 @@
     <a href="#promotions">Promotions</a>
     <a href="#contact">Contact</a>
   </nav>
-
-  <!-- ✅ AJOUT ICI -->
-  <div class="burger" id="burgerBtn">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-</header>
-<nav class="side-menu" id="sideMenu">
-  <a href="index.html">Accueil</a>
-  <a href="service.html">Services</a>
-  <a href="#about">À propos</a>
-  <a href="evenements.html">Événements</a>
-  <a href="#promotions">Promotions</a>
-  <a href="#contact">Contact</a>
-</nav>
   <!-- HERO -->
   <section class="hero" id="accueil">
     <div class="hero-left">
@@ -83,7 +80,7 @@
           Accéder à la vidéo
         </a>
 
-        <a href="https://baye-fall-la-noblesse.vercel.app/index.html"target="_blank" class="btn-primary" >
+        <a href="https://baye-fall-la-noblesse.vercel.app/index.html" target="_blank" class="btn-primary">
           Visitez BFLN <i class="fa-solid fa-arrow-right"></i>
         </a>
       </div>
@@ -113,7 +110,8 @@
     <h2 class="section-title">Photographie</h2>
 
     <p class="section-subtitle">
-      Un regard artistique et moderne pour sublimer vos portraits, événements, marques et univers visuels avec une esthétique unique.
+      Un regard artistique et moderne pour sublimer vos portraits, événements, marques et univers visuels avec une
+      esthétique unique.
     </p>
 
     <div class="grid">
@@ -121,7 +119,8 @@
         <span class="badge">Portrait</span>
         <h3 class="card-title">Portraits artistiques</h3>
         <p class="card-text">
-          Lumières étudiées, cadrages précis et direction artistique pour raconter votre personnalité en une seule image.
+          Lumières étudiées, cadrages précis et direction artistique pour raconter votre personnalité en une seule
+          image.
         </p>
         <div class="card-actions">
           <button class="btn-small">Accéder</button>
@@ -158,7 +157,8 @@
     <h2 class="section-title">Vidéo</h2>
 
     <p class="section-subtitle">
-      Clips, publicités, aftermovies et contenus narratifs réalisés avec une mise en scène cinématographique et une énergie contemporaine.
+      Clips, publicités, aftermovies et contenus narratifs réalisés avec une mise en scène cinématographique et une
+      énergie contemporaine.
     </p>
 
     <div class="grid">
@@ -166,7 +166,8 @@
         <span class="badge">Clips</span>
         <h3 class="card-title">Clips & créations artistiques</h3>
         <p class="card-text">
-          Des visuels forts, des transitions fluides et un montage inspiré pour amplifier votre univers musical ou visuel.
+          Des visuels forts, des transitions fluides et un montage inspiré pour amplifier votre univers musical ou
+          visuel.
         </p>
         <div class="card-actions">
           <button class="btn-small">Accéder</button>
@@ -177,7 +178,8 @@
         <span class="badge">Corporate</span>
         <h3 class="card-title">Brand content vidéo</h3>
         <p class="card-text">
-          Présentation de marque, storytelling, vidéos réseaux sociaux pour renforcer votre identité et votre crédibilité.
+          Présentation de marque, storytelling, vidéos réseaux sociaux pour renforcer votre identité et votre
+          crédibilité.
         </p>
         <div class="card-actions">
           <button class="btn-small">Accéder</button>
@@ -255,11 +257,13 @@
         <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-tiktok"></i></a>
         <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-instagram"></i></a>
         <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="https://www.youtube.com/@100pourcentDigital" target="_blank" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.youtube.com/@100pourcentDigital" target="_blank" class="social-link"><i
+            class="fa-brands fa-youtube"></i></a>
         <a href="#" target="_blank" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
       </div>
     </div>
   </footer>
 
 </body>
+
 </html>
